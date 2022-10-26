@@ -3,11 +3,15 @@ const login = async (req, res) => {
 };
 
 const dashboard = async (req, res) => {
-  const luchyNumber = Math.floor(Math.random() * 100);
+  const luckyNumber = Math.floor(Math.random() * 100);
+
   res.status(200).json({
-    msg: `Hello, Marco`,
+    msg: `Hello, marco`,
     secret: `Here is your authorized data, your lucky number is ${luckyNumber}`,
   });
 };
 
-module.exports = { login, dashboard };
+module.exports = {
+  login,
+  dashboard,
+};
