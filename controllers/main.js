@@ -1,8 +1,9 @@
+const jwt = require("jsonwebtoken");
 const CustomAPIError = require("../errors/custom-error");
 
 const login = async (req, res) => {
   const { username, password } = req.body;
-  // mongo
+  // mongoose validation
   // Joi
   // check in the controller
 
@@ -10,7 +11,11 @@ const login = async (req, res) => {
     throw new CustomAPIError("Please provide email and password", 400);
   }
 
-  console.log(username, password);
+  // just for demo, normally provided by DB!!
+  const id = new Date().getDate();
+
+  // try to keep payload small, better exerience for user
+  const token = jwt.sign({ id, username }, process.env.JWT_SECRET);
   res.send("Fake Login/Register/Signup Route");
 };
 
